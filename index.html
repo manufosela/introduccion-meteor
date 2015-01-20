@@ -14,11 +14,11 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link rel="stylesheet" href="../css/reveal.min.css">
-  <link rel="stylesheet" href="../css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
   <!-- For syntax highlighting -->
-  <link rel="stylesheet" href="../lib/css/zenburn.css">
+  <link rel="stylesheet" href="lib/css/zenburn.css">
   <style type="text/css">
     html.meteor-logo .state-background { background: url('img/meteorjs_logo2.jpg') center center no-repeat; position:relative; top:0px; }
     html.meteor-increible .state-background { background: url('img/logo-los-increibles_y_meteor.jpg') center center no-repeat; position:relative; top:0px; }
@@ -84,10 +84,11 @@
         <h2 class='title'>ya, pero... ¿Qué es Meteor?</h2>
         <p style="color:#0F0">Meteor es:</p>
         <ul>
-          <li>una plataforma FullStack (servidor, base de datos, framework…)</li>
-          <li>open source</li>
-          <li>basada completamente en javascript</li>
-          <li>con la que se pueden hacer aplicaciones web y móvil rápida y fácilmente.</li>
+          <li>Es una plataforma FullStack: servidor, base de datos, framework…</li>
+          <li>Permite usar cualquier libreria/framework</li>
+          <li>Basada completamente en javascript</li>
+          <li>Compatible con los paquetes npm de node</li>
+          <li>Integrada con Apache-Cordova para generar facilmente mobile apps</li>
         </ul>
       </section>
 
@@ -102,7 +103,7 @@
       <section>
         <h2>¿Qué lo diferencia del resto?</h2>
         <p>&nbsp;</p>
-        <p>MeteorJS es una evolución hacia  la sencillez.</p>
+        <p>MeteorJS es una evolución hacia la sencillez.</p>
       </section>
 
       <section>
@@ -112,40 +113,45 @@
       <section>
         <h2>1.- Datos en Línea.</h2>
         <p>No envía HTML a través de la red. Envía datos que se renderizan en cliente.</p>
+        <aside class="notes">Usa websockets</aside>
       </section>
 
       <section>
         <h2>2.- Un solo Lenguaje</h2>
         <p>Tanto la interfaz del cliente como la del servidor usa JavaScript.</p>
+        <aside class="notes">Javascript Isomorfico</aside>
       </section>
 
       <section>
         <h2>3.- Base de Datos en Todas Partes</h2>
         <p>Usa la misma API para acceder de forma transparente a su base de datos desde el cliente o el servidor.</p>
+        <aside class="notes">gracias miniMongo se puede hacer queries en cliente</aside>
       </section>
 
       <section>
         <h2>4.- Compensación de Latencia.</h2>
         <p>En el cliente, se usa pre-extracción (prefectching) y simulación del modelo para conseguir el efecto de una conexión de latencia cero con la base de datos.</p>
+        <aside class="notes">Después se encarga de sincronizar los datos con la base de datos y esta con el resto de clientes</aside>
       </section>
 
       <section>
         <h2>5.- Reactividad Full Stack</h2>
         <p>El tiempo real es el valor por defecto en todas las capas, desde la base de datos hasta las plantillas</p>
+        <aside class="notes">Es decir, cualquier cambio en un dato es informado de inmediato</aside>
       </section>
 
       <section>
         <h2>6.- Se adhiere al Ecosistema</h2>
         <p> Meteor es de código abierto e integra, mas que sustituye, las herramientas y frameworks existentes</p>
-        <p>Atmosphere, es el repositorio de paquetes de Meteor. Hay unos 3,300 paquetes</p>
+        <p><strong>Atmosphere</strong>, es el repositorio de paquetes de Meteor. Hay unos 3,300 paquetes</p>
         <p>Meteor tambien puede usar cualquiera de los mas de 115,000 paquetes de Node.js</p>
       </section>
 
       <section class="aLeft">
         <h2>7.- Simplicidad Equivale a Productividad. </h2>
-        <p>La mejor manera de hacer que algo parezca simple es que realmente sea simple.</p>
+        <p>La mejor manera de hacer que algo parezca simple es que realmente lo sea.</p>
         <p>&nbsp;</p>
-        <p>Evita repeticiones. 
+        <p>Evita repeticiones. </p>
         <p>Muchos paquetes disponibles.</p>
         <p>Cambio de contexto leve.</p>
         <p>Desarrollo más rápido.</p>
@@ -154,6 +160,7 @@
       <section>
         <h2>¿DESVENTAJAS?</h2>
         <p>...</p>
+        <aside class="notes">temas de seguridad por el autopublish y la latencia?. Propensa a ataques DDoS?</aside>
       </section>
   
       <section data-state='meteor-increible'>
@@ -163,11 +170,22 @@
       <section>
         <h2>Más detalles</h2>
         <p>Usa Suscripciones (websockets) en vez de Peticiones</p>
+        <aside class="notes">Aunque si pierde la conexión con el servidor usa polling</aside>
         <p>Por defecto crea “Single Page Apps”, pero puede no hacerlo</p>
+        <aside class="notes">Usando el paquete de routes: iron:routes</aside>
       </section>
   
       <section data-state='meteor-core'>
         <h2 style='position:relative; top:350px; left:-350px;'>El Core de Meteor</h2>
+        <aside class="notes">
+          Blaze, es el motor de templating. Viene de Handlebars.
+          Isobuild API, usa la misma sintaxis en cliente que en servidor.
+          Tracker, para la reactividad y detectar cuando cambia algo y necesario propagarlo.
+          DDP, el protocolo de comunicacion que usa meteor. Es mas simple aún que REST.
+          Livequery, familia de Live Database Connectors informa de cualquier cambio en la misma
+          que está empaquetada con FSDD, Full Stack Database Driver.
+          Ahora mismo está empaquetado con Mongo y con Redis experimentalmente. Pero ya hay paquetes MySQL.
+        </aside>
       </section>
 
       <section>
@@ -215,6 +233,12 @@
           <li class="fragment">lib/</li>
           <li class="fragment">private/</li>
         </ul>
+        <aside class="notes">
+          Esto no es obligatorio, pero es la manera que recomiendan. Cualquier html, js y css será utilizado cuando se lance la app.<br>
+          El orden de carga es primero lo que haya en lib/ (si existe), después archivos que empiecen por "main", despues el resto por orden alfabetico.<br>
+          Lo que haya en el directorio client/ se ejecuta en cliente y lo que haya en la carpeta server/ en el servidor.<br>
+          El resto de javascript se ejecutará en ambos, salvo que se indique en el propio codigo ( Meteor.isClient y Meteor.isServer )
+        </aside>
       </section>
 
       <section>
@@ -244,15 +268,46 @@
         <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
         <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
         <h2 class="title">Rompamos algo...</h2>
+        <aside class="notes">
+          <ul>
+            <li>Ejercicio 1:<ul>
+              <li>Instalar meteor</li>
+              <li>Crear proyecto mad-nodejs</li>
+              <li>Arrancar proyecto</li>
+              <li>Comprobar en 2 navegadores.</li>
+            </ul></li>
+            <li>Ejercicio 2:<p>
+            Añadir paquete mizzao:bootstrap-3
+            Y observar que cuando se termina de instalar ambos navegadores cambian el aspecto de lo que aparece.
+            </p></li>
+
+            <li>Ejercicio 3:<ul>
+              <li>Agregamos un template nuevo llamado 'people' con una iteración de people y mostramos una lista de nombres y apellidos.</li>
+              <li>Creamos un helper con people y devolvemos un array de nombres.</li>
+              <li>Vemos que se muestran.</li>
+            </ul></li>
+
+            <li>Ejercicio 4:<p>
+            Añadimos evento mousehover a cada LI y que devuelva el apellido... Q se muestre el apellido y con el mouseout desaparezca.
+            </p></li>
+
+            <li>Ejercicio 5:<ul>
+              <li>Añadimos collection. Q se rellene la primera vez con valores por defecto. Cambiamos en el helper el array por una query al  <</li>collection. </li>
+              <li>Probamos desde shell mongo a insertar, desde consola del navegador tb. Vemos q se actualiza en todos lados.</li>
+            </ul></li>
+
+            <li>Ejercicio 6:<ul>
+              <li>Quitamos autopublish y vemos q desaparecen los datos.</li>
+              <li>Agregamos publish y subscribe y vemos q vuelve a funcionar. </li>
+            </ul></li>
+        </aside>
+
       </section>
 
-
-
-
-
+      <section><!-- vacia antes de final --></section>
 
       <section data-state="meteor-fin">
-        <h1 style="color:#F91; position:relative; top:350px;">Gracias</h1>
+        <h1 style="color:#F91; position:relative; top:250px;">Gracias</h1>
       </section>
 
     </div>
@@ -261,8 +316,8 @@
 <header style="position:fixed; top:20px; left:20px; color:#FF3300">Introducción a MeteorJS</header>
 <footer style="position:fixed; bottom:20px; left:20px; color:#FF3300">by @manufosela</footer>
 
-<script src="../lib/js/head.min.js"></script>
-<script src="../js/reveal.min.js"></script>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
 
 <script>
   mode = Reveal.getQueryHash().mode || "";
@@ -289,12 +344,14 @@
 
   // Optional libraries used to extend on reveal.js
     dependencies: [
-      { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
-      { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-      { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-      { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-      { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'socket.io/socket.io.js', async: true },
+      { src: 'plugin/notes-server/client.js', async: true }
     ]
   });
 
