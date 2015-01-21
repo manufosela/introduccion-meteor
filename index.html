@@ -62,6 +62,25 @@
         </section>
 
         <section>
+          <p style='color:#F50; font-size:40px;'>@manufosela</p>
+          <img src='img/avatar.png'>
+          <h3>Analista/Desarrollador/DevOp/Back/Front-Web en Orange</h3>
+          <h4>Llevo desde 1999 haciendo web</h4>
+        </section>
+
+        <section>
+          <h2>Indice</h2>
+          <ul>
+            <li>Qué es MeteorJS y sus principios</li>
+            <li>Meteor un poco por dentro</li>
+            <li>Instalación y creación de "holamundo"</li>
+            <li>Ejemplo en vivo</li>
+            <li>Enlaces, tutoriales, fuentes...</li>
+            <li>¿Preguntas?</li>
+          </ul>
+        </section>
+
+        <section>
           <h2 class='title'>¿Qué es Metor?</h2>
           <p>&nbsp;</p>
           <p>Meteor es una plataforma de código abierto de próxima generación para la creación de aplicaciones web en tiempo real en un tiempo mínimo</p>
@@ -140,10 +159,12 @@
           <h2>7.- Simplicidad Equivale a Productividad. </h2>
           <p>La mejor manera de hacer que algo parezca simple es que realmente lo sea.</p>
           <p>&nbsp;</p>
-          <p>Evita repeticiones. </p>
-          <p>Muchos paquetes disponibles.</p>
-          <p>Cambio de contexto leve.</p>
-          <p>Desarrollo más rápido.</p>
+          <ul>
+            <li>Evita repeticiones. </li>
+            <li>Muchos paquetes disponibles.</li>
+            <li>Cambio de contexto leve.</li>
+            <li>Desarrollo más rápido.</li>
+          </ul>
         </section>
 
         <section>
@@ -152,7 +173,7 @@
           <aside class="notes">temas de seguridad por el autopublish y la latencia?. Propensa a ataques DDoS?</aside>
         </section>
     
-        <section data-background='img/logo-los-increibles_y_meteor.jpg'>
+        <section data-background='img/logo-los-increibles_y_meteor.jpg'><!--data-state="meteor-increible"-->
           <img src='img/mr_increible.jpg' style='position:relative; top:-200px; left:-300px;'/>
         </section>
     
@@ -164,7 +185,7 @@
           <aside class="notes">Usando el paquete de routes: iron:routes</aside>
         </section>
     
-        <section data-background='img/meteor-core.jpg'>
+        <section data-background='img/meteor-core.jpg'><!--data-state="meteor-core"-->
           <h2 style='position:relative; top:350px; left:-300px;'>El Core de Meteor</h2>
           <aside class="notes">
             <ul>
@@ -175,9 +196,9 @@
                   <li>Maneja las RPC (llamadas a procedicimientos remotos)</li>
                   <li>administra los datos (added, changed, removed)</li>
                 </ul>
+                Se puede usar el paquete ddp-analyzer para ver todo el flujo
               </li>
-              <li>Livequery, familia de Live Database Connectors informa de cualquier cambio en la misma.</li>
-              <li>FSDD, Full Stack Database Driver.</li>
+              <li>Livequery, conjunto de conectores de base de datos en vivo. Que utiliza FSDD, Full Stack Database Driver (controladores de bases de datos "Full Stack").</li>
               <li>Ahora mismo está empaquetado con Mongo y con Redis experimentalmente. Pero ya hay paquetes MySQL.</li>
             </ul>
           </aside>
@@ -227,6 +248,8 @@
             <li class="fragment">server/</li>
             <li class="fragment">lib/</li>
             <li class="fragment">private/</li>
+            <li class="fragment">collections/</li>
+            <li class="fragment">...</li>
           </ul>
           <aside class="notes">
             Esto no es obligatorio, pero es la manera que recomiendan. Cualquier html, js y css será utilizado cuando se lance la app.<br>
@@ -266,8 +289,8 @@
             <ul>
               <li>Ejercicio 1:<ul>
                 <li>Instalar meteor</li>
-                <li>Crear proyecto mad-nodejs</li>
-                <li>Arrancar proyecto</li>
+                <li>Crear proyecto: meteor create mad-nodejs</li>
+                <li>Arrancar proyecto: cd mad-nodejs; meteor</li>
                 <li>Comprobar en 2 navegadores.</li>
               </ul></li>
               <li>Ejercicio 2:<p>
@@ -295,10 +318,27 @@
                 <li>Agregamos publish y subscribe y vemos q vuelve a funcionar. </li>
               </ul></li>
           </aside>
-
         </section>
 
-        <section><!-- vacia antes de final --></section>
+        <section>
+          <h2>Recursos y fuentes</h2>
+          <ul>
+            <li><a href="https://www.meteor.com">Página oficial de Meteor</a></li>
+            <li><a href="https://www.meteor.com/install ">Instalación y "holamundo"</a></li>
+            <li><a href="http://docs.meteor.com/#/basic/">Documentación básica</a></li>
+            <li><a href="http://docs.meteor.com/#/full/">Documentación completa</a></li>
+            <li><a href="https://atmospherejs.com/">Repositorio de paquetes AtmosphereJS</a></li>
+            <li><a href="https://blog.openshift.com/day-15-meteor-building-a-web-app-from-scratch-in-meteor/">Ejemplo de app desde 0</a></li>
+            <li><a href="https://github.com/meteor/meteor/wiki">Wiki</a></li>
+            <li><a href="https://www.youtube.com/watch?v=EJzulpXZn6g">METEOR y MYSQL</a></li>
+            <li><a href="http://discovermeteor.com">Libro de cabecera</a></li>
+            <li><a href="http://presen.tacion.es/introduccion-meteor">Esta presentación</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Easy Questions?</h1>
+        </section>
 
         <section>
           <h1 style="color:#F91;">Gracias</h1>
@@ -309,7 +349,7 @@
   </div>
 
   <header style="position:fixed; top:20px; left:20px; color:#FF3300">Introducción a MeteorJS</header>
-  <footer style="position:fixed; bottom:20px; left:20px; color:#FF3300">by @manufosela</footer>
+  <footer style="position:fixed; bottom:20px; left:20px; color:#FF3300">by <a href='https://twitter.com/manufosela'>@manufosela</a></footer>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
