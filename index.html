@@ -47,6 +47,27 @@
   </head>
 
   <body>
+    <div style='background:#F30; position:absolute; bottom:0; left:0; width:220px; height:150px; z-index:10'>
+      <canvas id="videoCanvas" width="220" height="150">
+        <p>
+        Please use a browser that supports the Canvas Element, like
+        <a href="http://www.google.com/chrome">Chrome</a>,
+        <a href="http://www.mozilla.com/firefox/">Firefox</a>,
+        <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
+        </p>
+        </canvas>
+        <script type="text/javascript" src="jsmpg.js"></script>
+        <script type="text/javascript">
+        // Show loading notice
+        var canvas = document.getElementById('videoCanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#444';
+        ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+        // Setup the WebSocket connection and start the player
+        var client = new WebSocket( 'ws://localhost:8084/' );
+        var player = new jsmpeg(client, {canvas:canvas});
+        </script>
+    </div>
 
     <div class="reveal">
       <div class="slides">
@@ -62,8 +83,8 @@
         </section>
 
 				<section>
-					<img src='img/mad_nodejs_logo.jpg' style='float:left; width:50%;' />
-					<img src='img/kunlabori_logo.jpg' style='float:right; width:40%;' />
+					<img src='img/mad_nodejs_logo.jpg' style='float:left; width:50%; border:0;' />
+					<img src='img/kunlabori_logo.jpg' style='float:right; width:40%; border:0;' />
 					<div style='clear:both'></div>
 				</section>
 
@@ -341,6 +362,7 @@
             <li><a href="https://www.youtube.com/watch?v=EJzulpXZn6g">METEOR y MYSQL</a></li>
             <li><a href="http://discovermeteor.com">Libro de cabecera</a></li>
             <li><a href="http://presen.tacion.es/introduccion-meteor">Esta presentación</a></li>
+            <li><a href="https://hackpad.com/Top-Resources-for-learning-MeteorJS-Nrpnr6CHiGs">Top Resources MeteorJS</a></li>
           </ul>
         </section>
 

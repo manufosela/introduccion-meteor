@@ -1,0 +1,1 @@
+ffmpeg -f v4l2 -y -s 320x240 -r 20 -c:v mjpeg -i /dev/video0 -f mpeg1video -q:v 6 -vf "crop=iw-mod(iw\,2):ih-mod(ih\,2)" -an -b:v 0 -b:a 0 http://localhost:8082/123456/320/200
